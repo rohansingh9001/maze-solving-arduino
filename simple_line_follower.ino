@@ -15,8 +15,12 @@
 #define LM 10
 
 //speed variables
-int fast = 175;
-int slow = 130;
+int fastl = 125;
+int fastr = 105;
+int slowl = 100;
+int slowr = 80;
+int turn = 20;
+int del = 90;
 
 
 //turning functions  
@@ -25,12 +29,17 @@ int slow = 130;
     digitalWrite(LM2, LOW);
     digitalWrite(RM1, LOW);
     digitalWrite(RM2, HIGH);
+    digitalWrite(RM, turn);
+    digitalWrite(LM, turn);
   }
   void turn_right() {
     digitalWrite(LM1, LOW);
     digitalWrite(LM2, HIGH);
     digitalWrite(RM1, HIGH);
     digitalWrite(RM2, LOW);
+    digitalWrite(RM, turn);
+    digitalWrite(LM, turn);
+    
   }
 
   
@@ -68,8 +77,8 @@ void loop()
     digitalWrite(LM2, LOW);
     digitalWrite(RM1, HIGH);
     digitalWrite(RM2, LOW);
-    analogWrite(RM, fast);
-    analogWrite(LM, fast);
+    analogWrite(RM, fastr);
+    analogWrite(LM, fastl);
   }
 
   else if (!(digitalRead(L)) ^ !(digitalRead(LL)))     // Turn right
@@ -78,8 +87,8 @@ void loop()
     digitalWrite(LM2, LOW);
     digitalWrite(RM1, HIGH);
     digitalWrite(RM2, LOW);
-    analogWrite(RM, fast);
-    analogWrite(LM, slow);
+    analogWrite(RM, fastr);
+    analogWrite(LM, slowl);
 
   }
 
@@ -89,8 +98,8 @@ void loop()
     digitalWrite(LM2, LOW);
     digitalWrite(RM1, HIGH);
     digitalWrite(RM2, LOW);
-    analogWrite(RM, slow);
-    analogWrite(LM, fast);
+    analogWrite(RM, slowr);
+    analogWrite(LM, fastl);
 
   }
 
@@ -101,14 +110,14 @@ void loop()
     digitalWrite(RM1, LOW);
     digitalWrite(RM2, LOW);
   }
-  else if (!(digitalRead(RR)) && !(digitalRead(R))) { //right turn
+  else if (!(digitalRead(RR)) && !(digitalRead(R)) && !(digitalRead(CC)) && digitalRead(LL) && digitalRead(L)) { //right turn
     turn_left();
-    delay(180);
+    delay(del);
     
   }
-  else if (!(digitalRead(LL)) && !(digitalRead(L))) {  //left turn
+  else if (!(digitalRead(LL)) && !(digitalRead(L)) && !(digitalRead(CC)) && digitalRead(RR) && digitalRead(R) ) {  //left turn
     turn_right();
-    delay(180);
+    delay(del);
     
 }
 
@@ -120,6 +129,10 @@ void loop()
 //    digitalWrite(RM2, LOW);
 //    turn_right();
 //   }
+//  else {
+//    turn_right();
+//    delay(del - 10);
+//  }
    
     
   
