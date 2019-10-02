@@ -22,6 +22,26 @@ int val_c = 0;
 int val_rr = 0;
 int val_r = 0;
 
+//definition of movement functions
+void forward (){
+  Serial.println("Move Forward");
+}
+void right (){
+  Serial.println("Turn Right");
+}
+void left (){
+  Serial.println("Turn left");
+}
+void tjunction (){
+  Serial.println("T_Junction");
+}
+void plusjunction (){
+  Serial.println("plusjunction");
+}
+void deadend (){
+  Serial.println("Deadend");
+}
+
 
 // uses the left hand algorithm to solve the maze
 void left_hand_rule() {
@@ -56,30 +76,9 @@ void setup() {
   pinMode(l,INPUT);
   pinMode(c,INPUT);
   pinMode(r,INPUT);
-  pinMode(rr,INPUT);
-  
-    
+  pinMode(rr,INPUT); 
 }
 
-//definition of movement functions
-void forward (){
-  Serial.println("Move Forward");
-}
-void right (){
-  Serial.println("Turn Right");
-}
-void left (){
-  Serial.println("Turn left");
-}
-void tjunction (){
-  Serial.println("T_Junction");
-}
-void plusjunction (){
-  Serial.println("plusjunction");
-}
-void deadend (){
-  Serial.println("Deadend");
-}
 
 //main loop runs until code is shut down
 void loop() {
